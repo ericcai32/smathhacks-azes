@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <title>Greetings</title>
+    <link rel="stylesheet" href="style.css">
+</html>
+
+<body>
+    <div class="navbar" id="navbar">
+        Navbar
+    </div>
+    <div class="hero-container">
+        <div class="hero-text-box">
+            <h1>Greetings</h1>
+            <p>The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.</p>
+            <div class="intro-buttons">
+                <button onclick="scrollToContent()">Learn more</button>
+                <a href="map.html"><button>View map</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="home-content" id="content-1">
+        This is the part where we talk about why it's a problem.
+    </div>
+    <div class="home-content">
+        This is the part where we talk about why it's a problem.
+    </div>
+    <div class="home-content">
+        This is the part where we talk about why it's a problem.
+    </div>
+
+    <script>
+        window.onscroll = function() {
+            scrollFunction();
+        };
+    
+        function scrollFunction() {
+            var navbar = document.getElementById("navbar");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                navbar.style.display = "block";
+            } else {
+                navbar.style.display = "none";
+            }
+        }
+
+        function scrollToContent() {
+            var contentElement = document.getElementById("content-1");
+            contentElement.scrollIntoView({ behavior: 'smooth'});
+        }
+    </script>
+</body>
