@@ -1,92 +1,4 @@
-class KNN {
-    constructor(k, data) {
-      this.k = k;
-      this.data = data;
-    }
-  
-    // Euclidean distance between two points
-    distance(point1, point2) {
-      return Math.sqrt(
-        Math.pow(point1.x1 - point2.x1, 2) + Math.pow(point1.x2 - point2.x2, 2)
-      );
-    }
-    // KNN classification
-    classify(newPoint) {
-      // Calculate distances to all data points
-      const distances = this.data.map(point => ({
-        point,
-        distance: this.distance(newPoint, point)
-      }));
-  
-      // Sort distances in ascending order
-      distances.sort((a, b) => a.distance - b.distance);
-  
-      // Take the first k points
-      const kNearestNeighbors = distances.slice(0, this.k);
-  
-      // Count the occurrences of each label
-      const labelCounts = kNearestNeighbors.reduce((counts, neighbor) => {
-        const label = neighbor.point.label;
-        counts[label] = (counts[label] || 0) + 1;
-        return counts;
-      }, {});
-  
-      // Determine the majority label
-      const majorityLabel = Object.keys(labelCounts).reduce((a, b) =>
-        labelCounts[a] > labelCounts[b] ? a : b
-      );
-  
-      return parseInt(majorityLabel, 10);
-    }
-  }
-  
-  class KNN1 {
-    constructor(k, data) {
-      this.k = k;
-      this.data = data;
-    }
-  
-    // Euclidean distance between two points
-    distance(point1, point2) {
-      return Math.sqrt(
-        Math.pow(point1.x1 - point2.x1, 2) +
-        Math.pow(point1.x2 - point2.x2, 2) +
-        Math.pow(point1.x3 - point2.x3, 2) +
-        Math.pow(point1.x4 - point2.x4, 2)
-      );
-    }
-  
-    // KNN classification
-    classify(newPoint) {
-      // Calculate distances to all data points
-      const distances = this.data.map(point => ({
-        point,
-        distance: this.distance(newPoint, point)
-      }));
-  
-      // Sort distances in ascending order
-      distances.sort((a, b) => a.distance - b.distance);
-  
-      // Take the first k points
-      const kNearestNeighbors = distances.slice(0, this.k);
-  
-      // Count the occurrences of each label
-      const labelCounts = kNearestNeighbors.reduce((counts, neighbor) => {
-        const label = neighbor.point.label;
-        counts[label] = (counts[label] || 0) + 1;
-        return counts;
-      }, {});
-  
-      // Determine the majority label
-      const majorityLabel = Object.keys(labelCounts).reduce((a, b) =>
-        labelCounts[a] > labelCounts[b] ? a : b
-      );
-  
-      return parseInt(majorityLabel, 10);
-    }
-  }
-  
-  const apple =     `[
+const apple =     `[
   {
   "Location": "Albemarle, NC - Coord 1",
   "Latitude": 35.31351256336996,
@@ -8838,13 +8750,103 @@ class KNN {
   "soil_moisture": 0.2900357142857143
   }
   ]`
-  
-  //data prep
-  let JSONfile = JSON.parse(apple)
-  let data
-  let dataset
-  dataset=[]
-  for(let i=0;i<JSONfile.length;i++){
-      data={x1:JSONfile[i].Latitude, x2 : JSONfile[i].Longitude,label:i}
-      dataset.push(data)
-  }
+
+ //data prep
+let JSONfile = JSON.parse(apple)
+
+
+class KNN {
+constructor(k, data) {
+  this.k = k;
+  this.data = data;
+}
+
+// Euclidean distance between two points
+distance(point1, point2) {
+  return Math.sqrt(
+    Math.pow(point1.x1 - point2.x1, 2) + Math.pow(point1.x2 - point2.x2, 2)
+  );
+}
+// KNN classification
+classify(newPoint) {
+  // Calculate distances to all data points
+  const distances = this.data.map(point => ({
+    point,
+    distance: this.distance(newPoint, point)
+  }));
+
+  // Sort distances in ascending order
+  distances.sort((a, b) => a.distance - b.distance);
+
+  // Take the first k points
+  const kNearestNeighbors = distances.slice(0, this.k);
+
+  // Count the occurrences of each label
+  const labelCounts = kNearestNeighbors.reduce((counts, neighbor) => {
+    const label = neighbor.point.label;
+    counts[label] = (counts[label] || 0) + 1;
+    if(JSONfile[label].land_use==="4"){
+        counts[label]=60
+        return counts
+    }
+    return counts;
+  }, {});
+
+  // Determine the majority label
+  const majorityLabel = Object.keys(labelCounts).reduce((a, b) =>
+    labelCounts[a] > labelCounts[b] ? a : b
+  );
+
+  return parseInt(majorityLabel, 10);
+}
+}
+
+class KNN1 {
+constructor(k, data) {
+  this.k = k;
+  this.data = data;
+}
+
+// Euclidean distance between two points
+distance(point1, point2) {
+  return Math.sqrt(
+    Math.pow(point1.x1 - point2.x1, 2) +
+    Math.pow(point1.x2 - point2.x2, 2) +
+    Math.pow(point1.x3 - point2.x3, 2) +
+    Math.pow(point1.x4 - point2.x4, 2)
+  );
+}
+
+// KNN classification
+classify(newPoint) {
+  // Calculate distances to all data points
+  const distances = this.data.map(point => ({
+    point,
+    distance: this.distance(newPoint, point)
+  }));
+
+  // Sort distances in ascending order
+  distances.sort((a, b) => a.distance - b.distance);
+
+  // Take the first k points
+  const kNearestNeighbors = distances.slice(0, this.k);
+
+  // Count the occurrences of each label
+  const labelCounts = kNearestNeighbors.reduce((counts, neighbor) => {
+    const label = neighbor.point.label;
+    counts[label] = (counts[label] || 0)+1;
+    if(label==="4"){
+        counts={"4":60}
+        return counts
+    }
+    return counts;
+  }, {});
+
+  // Determine the majority label
+  const majorityLabel = Object.keys(labelCounts).reduce((a, b) =>
+    labelCounts[a] > labelCounts[b] ? a : b
+  );
+
+  return parseInt(majorityLabel, 10);
+}
+}

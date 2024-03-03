@@ -88,10 +88,30 @@ body {
     padding: 15px;
     margin-top: 8vh;
     background-color: var(--color-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-content > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.big-padding {
+    padding: 15vw;
+}
+
+.home-content > img {
+    height: 75%;
 }
 
 div {
     padding-left: 15px;
+    padding-right: 15px;
 }
 
 div.intro-buttons {
@@ -114,7 +134,7 @@ div.inner {
 }
 
 div#stats {
-    width: 27vw;
+    width: 35vw;
     background-color: var(--color-2);
     margin-right: 15px;
     border-radius: 5px;
@@ -129,6 +149,7 @@ div#map {
 div.map-div {
     display: flex;
     margin-right: 15px;
+    padding-right: 0;   
 }
 
 h1 {
@@ -143,11 +164,12 @@ h1.home-header {
 }
 
 div#stats > h1 {
-    font-size: 2.5em;
+    font-size: 1.5em;
 }
 
 h1#coords {
-    margin-top: 0;
+    margin-top: 15px;
+    margin-right: 10px;
 }
 
 p {
@@ -156,6 +178,19 @@ p {
 
 p.degN {
     margin-right: 10px;
+}
+
+p.proj {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+p.divider {
+    margin-bottom: 5px;
+}
+
+li {
+    margin-left: 15px;
 }
 
 input {
@@ -197,14 +232,32 @@ button:hover {
     color: black;
 }
 
+button.home-down:hover {
+    background-color: var(--color-1);
+}
+
 input#userInput {
     width: 20vw;
 }
 
-input#lat {
-    width: 5vw;
+input#latlong {
+    width: 15vw;
 }
 
-input#long {
-    width: 5vw;
+#tool {
+    margin-right: 6vw;
 }
+
+.home-plots {
+    display: flex;
+    padding: 0;
+}
+
+.home-plot {
+    height: 30vh;
+}
+
+#home-plot-big {
+    padding: 0;
+}
+

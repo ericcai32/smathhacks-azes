@@ -10,7 +10,6 @@
 <body>
     <div class="navbar" id="navbar">
         <a href="index.html"><img src="atlas_logo.png"></a>
-        <a href="map.html">Map</a>
     </div>
     <div class="hero-container">
         <div class="hero-text-box">
@@ -23,18 +22,45 @@
         </div>
     </div>
     <div class="home-content" id="content-1">
-        This is the part where we talk about why it's a problem.
+        <div class="big-padding">
+            <h2>What is Atlas?</h2>
+            <p>
+                According to the American Farmland Trust, North Carolina is the second-most threatened state in regards to losing farmland. As much as 20% of NC's farmland has already
+                been lost since the past decade, and it's only getting worse. By 2040, the state will lose nearly 1.2 million acres of farmland. Atlas is here to help. We provide novel
+                machine learning models to highlight areas where preserving farmland is a high priority. We also understand the need to serve North Carolina's rising population. Therefore
+                we provide intuitive tools to help urban developers make environmentally-conscious decisions while choosing where to build.
+            </p>
+        </div>
     </div>
     <div class="home-content">
-        <img src="acres_prediction.png">
-        <img src="farms_prediction.png">
-        <label>Enter a year: </label>
-        <input type="text" id="homeProjectionInput">
-        <button onclick="homeProjection()">Submit</button>
-        <o id="homeProjectionResult"></o>
+        <div id="home-plot-big">
+            <h2>Visualizing the Problem</h2>
+            <div class="home-plots">
+                <img src="acres_prediction.png" class="home-plot">
+                <img src="farms_prediction.png" class="home-plot">
+            </div>
+        </div>
+        <div>
+            <div>
+                <label>Enter a year to see the predicted acres of farmland and number of farms remaining: </label>
+                <input type="text" id="homeProjectionInput">
+                <button onclick="homeProjection()" class="home-down">Submit</button>
+            </div>
+            <p id="homeProjectionResult1"></p>
+            <p id="homeProjectionResult2"></p>
+        </div>
     </div>
     <div class="home-content">
-        This is the part where we talk about why it's a problem.
+        <div class="big-padding">
+            <h2>Our Tool</h2>
+            <p>
+                Atlas's key product is the Farming Potential Mapping tool. At the click of a mouse, a myriad of statistics and projections are available for any location in North
+                Carolina. Climate and soil data can be used to assess farmland quality. Land categorization creates a better understanding of human impacts. Most importantly, the
+                Farming Potential rating synthesizes all of this data and more to concisely convey what farmland to prioritize. These measures will be used to maximize North Carolina's
+                agricultural output without sacrificing our state's thriving spirit.
+            </p>
+        </div>
+        <img src="tool.png" id="tool">
     </div>
 
     <script>
@@ -58,7 +84,10 @@
 
         function homeProjection() {
             let year = document.getElementById("homeProjectionInput").value
-            document.getElementById("homeProjectionResult").textContent = year
+            let theAcresAnswer=9.98974240e+01+ (-4.53627157e-02*parseFloat(year))
+            let theFarmsAnswer = 1.36968138e+03 +(-6.55831003e-01*parseFloat(year))
+            document.getElementById("homeProjectionResult1").textContent = "Acres Remaining: " + Math.round(theAcresAnswer*100)/100 + " million"
+            document.getElementById("homeProjectionResult2").textContent = "Farms Remaining: " + Math.round(theFarmsAnswer * 1000)/1000 + " thousand"
         }
     </script>
 </body>
