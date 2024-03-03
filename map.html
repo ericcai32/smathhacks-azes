@@ -10,7 +10,7 @@
 <body>
     <div class="navbar" id="navbar">
         <a href="index.html"><img src="atlas_logo.png"></a>
-        <a href="map.html">Farmland Potential Map</a>
+        <a href="map.html">Map</a>
     </div>
     <div class="navbar-place">
     </div>
@@ -30,6 +30,9 @@
         </div>
     </div>
     <div class="map-div">
+        <div id="stats">
+            <h1 id="coords">Use this tool determine the optimal land for farmland and urban developments.</h1>
+        </div>
         <iframe
         id="map"
         width="0"
@@ -39,9 +42,6 @@
         allowfullscreen
         src="https://www.google.com/maps/embed/v1/search?q=North+Carolina&zoom=7&key=AIzaSyCmSzImOzSIVqGLKXi1ppJJWBlc8iYXJm4&maptype=satellite">
         </iframe>
-        <div id="stats">
-            <h1 id="coords">Use this tool determine the optimal land for farmland and urban developments.</h1>
-        </div>
     </div>
 
     <script>
@@ -60,6 +60,7 @@
 
     </script>
 
+    <script src="ML.js"></script>
     <script src="map.js"></script>
 
 </body>

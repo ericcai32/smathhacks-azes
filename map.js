@@ -15,4 +15,48 @@ function checkLocation() {
 
     document.getElementById("coords").textContent = latlong
 
+    //to change k value, change number below
+    const knn = new KNN(1, dataset);
+    
+    //add coordinates here
+    latlongList = latlong.split(",")
+    latlongList[0] = parseFloat(latlongList[0])
+    latlongList[1] = parseFloat(latlongList[1])
+    const newPoint = { x1: latlongList[0], x2: latlongList[1] };
+    console.log(newPoint)
+    
+    //finds data point closest to the inputted data point
+    const result = knn.classify(newPoint);
+    console.log(`The predicted label for the new point is: ${result}`);
+    
+    //data prep to analyze land
+    let data1
+    let dataset1
+    dataset1=[]
+    for(let i=0;i<JSONfile.length;i++){
+        data1={x1:JSONfile[i].temperature, x2 : JSONfile[i].humidity, x3: JSONfile[i].soil_temp, x4: JSONfile[i].soil_moisture, label:JSONfile[i].land_use}
+        dataset1.push(data1)
+    }
+    
+    const knn1 = new KNN1(20, dataset1);
+    
+    //these are all the categories
+    let classification=["Tree cover, broadleaved, evergreen","Tree cover, needleleaved, evergreen","Mosaic cropland and natural vegetation","Mosaic tree and shrub and herbaceous cover","Urban Areas","Cropland, irrigated or post-flooding","Tree cover, flooded, fresh or brakish water", "Shrubland","Lichens and mosses","Mosaic herbaceous cover (>50%) / tree and shrub (<50%)","Water bodies","Tree cover, flooded, saline water","Tree cover, broadleaved, deciduous, closed to open (>15%)","Shrub or herbaceous cover, flooded, fresh/saline/brakish water","Grassland"]
+    
+    //this was found from previous iteration of algorithm
+    const newPoint1 = {x1:JSONfile[result].temperature, x2 : JSONfile[result].humidity, x3: JSONfile[result].soil_temp, x4: JSONfile[result].soil_moisture};
+    
+    //calculates land type and prints
+    const result1 = classification[Math.floor(knn1.classify(newPoint1))];
+    console.log(`The predicted label for the new point is: ${result1}`);
+
+    let oldStats = stats.querySelectorAll("p")
+    oldStats.forEach(function(element) {
+        element.remove()
+    })
+
+    let stat = document.createElement("p")
+    stat.textContent = result1
+    stats.appendChild(stat)
+
 }
