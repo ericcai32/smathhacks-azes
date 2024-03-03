@@ -10,12 +10,12 @@
 <body>
     <div class="navbar" id="navbar">
         <a href="index.html"><img src="atlas_logo.png"></a>
+        <a href="map.html">Farmland Potential Map</a>
     </div>
     <div class="navbar-place">
     </div>
     <div>
         <h1>Farmland Potential</h1>
-        <p>Use this tool determine the optimal land for farmland and urban developments.</p>
     </div>
     <div class="map-inputs">
         <div class="inner">
@@ -24,12 +24,8 @@
             <button onclick="changeMap()">Search</button>
         </div>
         <div class="inner">
-            <label>Latitude: </label>
-            <input type="text" id="lat">
-            <p class="degN">° N</p>
-            <label>Longitude: </label>
-            <input type="text" id="long">
-            <p>° W</p>
+            <label>Coordinates: </label>
+            <input type="text" id="latlong" placeholder="0.000, 0.000">
             <button onclick="checkLocation()">Submit</button>
         </div>
     </div>
@@ -44,18 +40,18 @@
         src="https://www.google.com/maps/embed/v1/search?q=North+Carolina&zoom=7&key=AIzaSyCmSzImOzSIVqGLKXi1ppJJWBlc8iYXJm4&maptype=satellite">
         </iframe>
         <div id="stats">
-            <h1 id="coords">lat, long</h1>
+            <h1 id="coords">Use this tool determine the optimal land for farmland and urban developments.</h1>
         </div>
     </div>
 
     <script>
         let navbar = document.getElementById("navbar");
-        navbar.style.display = "block";
+        navbar.style.display = "flex";
 
         let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
         let mapWidth = (70 * viewportWidth) / 100
         let viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-        let mapHeight = (73 * viewportHeight) / 100
+        let mapHeight = (77 * viewportHeight) / 100
 
         let map = document.getElementById("map")
         map.setAttribute("width", mapWidth)
