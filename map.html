@@ -9,44 +9,59 @@
 
 <body>
     <div class="navbar" id="navbar">
-        Navbar
+        <a href="index.html"><img src="atlas_logo.png"></a>
+    </div>
+    <div class="navbar-place">
     </div>
     <div>
-        <label>Search for an address:</label>
-        <input type="text" id="userInput">
-        <button onclick="changeMap()">Search</button>
-        <label>Latitude:</label>
-        <input type="text" id="lat">
-        <p>° N</p>
-        <label>Longitude:</label>
-        <p>° W</p>
-        <input type="text" id="long">
-        <button onclick="checkLocation()">Submit</button>
+        <h1>Farmland Potential</h1>
+        <p>Use this tool determine the optimal land for farmland and urban developments.</p>
     </div>
-    <iframe
+    <div class="map-inputs">
+        <div class="inner">
+            <label>Search for an address: </label>
+            <input type="text" id="userInput">
+            <button onclick="changeMap()">Search</button>
+        </div>
+        <div class="inner">
+            <label>Latitude: </label>
+            <input type="text" id="lat">
+            <p class="degN">° N</p>
+            <label>Longitude: </label>
+            <input type="text" id="long">
+            <p>° W</p>
+            <button onclick="checkLocation()">Submit</button>
+        </div>
+    </div>
+    <div class="map-div">
+        <iframe
         id="map"
-        width="600"
-        height="450"
+        width="0"
+        height="0"
         style="border:0"
         loading="lazy"
         allowfullscreen
-        src="https://www.google.com/maps/embed/v1/search?q=North+Carolina&zoom=7&key=AIzaSyCmSzImOzSIVqGLKXi1ppJJWBlc8iYXJm4
-            &maptype=satellite">
-    </iframe>
-
-    <div id="stats">
-        <h2 id="coords">lat, long</h2>
+        src="https://www.google.com/maps/embed/v1/search?q=North+Carolina&zoom=7&key=AIzaSyCmSzImOzSIVqGLKXi1ppJJWBlc8iYXJm4&maptype=satellite">
+        </iframe>
+        <div id="stats">
+            <h1 id="coords">lat, long</h1>
+        </div>
     </div>
 
     <script>
-        function scrollFunction() {
-            var navbar = document.getElementById("navbar");
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                navbar.style.display = "block";
-            } else {
-                navbar.style.display = "none";
-            }
-        }
+        let navbar = document.getElementById("navbar");
+        navbar.style.display = "block";
+
+        let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+        let mapWidth = (70 * viewportWidth) / 100
+        let viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        let mapHeight = (73 * viewportHeight) / 100
+
+        let map = document.getElementById("map")
+        map.setAttribute("width", mapWidth)
+        map.setAttribute("height", mapHeight)
+    
+
     </script>
 
     <script src="map.js"></script>
