@@ -33,7 +33,7 @@ body {
 }
 
 .navbar-place {
-    height: 30px;
+    height: 45px;
 }
 
 .navbar > a {
@@ -102,7 +102,7 @@ body {
 }
 
 .big-padding {
-    padding: 15vw;
+    padding: 10vw;
 }
 
 .home-content > img {

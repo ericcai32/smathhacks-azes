@@ -76,8 +76,8 @@ function checkLocation() {
         dataset1.push(data1)
     }
     
-    const knn1 = new KNN1(15, dataset1);
-    const knn3 = new KNN1(30, dataset1);
+    const knn1 = new KNN1(25, dataset1);
+    const knn3 = new KNN1(50, dataset1);
     
     
     //these are all the categories
