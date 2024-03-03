@@ -1,3 +1,21 @@
+function initMap(latlng={lat: 35.7596, lng: -79.0193}, zoom=7) {
+    const gMap = new google.maps.Map(document.getElementById("map"), {
+        zoom: zoom,
+        center: latlng,
+        mapTypeId: "hybrid",
+        backgroundColor: "none",
+    })
+
+    gMap.addListener("click", (mapsMouseEvent) => {
+        coords = mapsMouseEvent.latLng.toJSON()
+        let latlong = document.getElementById("latlong")
+        latlong.value = coords['lat'] + ", " + coords['lng']
+        checkLocation()
+    });
+}
+
+window.initMap = initMap;
+
 function changeMap() {
     // Get the input value
     let inputAddress = document.getElementById("userInput").value;
@@ -8,7 +26,17 @@ function changeMap() {
 function checkLocation() {
     let latlong = document.getElementById("latlong").value
     let map = document.getElementById("map")
-    map.setAttribute("src", "https://www.google.com/maps/embed/v1/view?center=" + latlong + "&zoom=18&key=AIzaSyCmSzImOzSIVqGLKXi1ppJJWBlc8iYXJm4&maptype=satellite")
+
+    latlongList = latlong.split(",")
+    latlongList[0] = parseFloat(latlongList[0])
+    latlongList[1] = parseFloat(latlongList[1])
+    
+    if (!(latlongList[0] > 33.8 && latlongList[0] < 36.6 && latlongList[1] < -75.4 && latlongList[1] > -84.2)) {
+        alert("For accurate data, choose a location in North Carolina")
+        return
+    }
+
+    initMap({lat: latlongList[0], lng: latlongList[1]}, 18)
     
     let stats = document.getElementById("stats")
     stats.style.display = "block"
@@ -19,9 +47,6 @@ function checkLocation() {
     const knn = new KNN(1, dataset);
     
     //add coordinates here
-    latlongList = latlong.split(",")
-    latlongList[0] = parseFloat(latlongList[0])
-    latlongList[1] = parseFloat(latlongList[1])
     const newPoint = { x1: latlongList[0], x2: latlongList[1] };
     console.log(newPoint)
     

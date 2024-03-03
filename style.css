@@ -120,8 +120,15 @@ div#stats {
     border-radius: 5px;
 }
 
+div#map {
+    width: 100%;
+    height: 77vh;
+    padding-right: 15px;
+}
+
 div.map-div {
     display: flex;
+    margin-right: 15px;
 }
 
 h1 {

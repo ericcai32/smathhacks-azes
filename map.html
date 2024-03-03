@@ -31,17 +31,9 @@
     </div>
     <div class="map-div">
         <div id="stats">
-            <h1 id="coords">Use this tool determine the optimal land for farmland and urban developments.</h1>
+            <h1 id="coords">Click anywhere in North Carolina or enter coordinates above to view farming potential.</h1>
         </div>
-        <iframe
-        id="map"
-        width="0"
-        height="0"
-        style="border:0"
-        loading="lazy"
-        allowfullscreen
-        src="https://www.google.com/maps/embed/v1/search?q=North+Carolina&zoom=7&key=AIzaSyCmSzImOzSIVqGLKXi1ppJJWBlc8iYXJm4&maptype=satellite">
-        </iframe>
+        <div id="map"></div>
     </div>
 
     <script>
@@ -60,6 +52,10 @@
 
     </script>
 
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmSzImOzSIVqGLKXi1ppJJWBlc8iYXJm4&callback=initMap&v=weekly"
+    defer
+    ></script>
     <script src="ML.js"></script>
     <script src="map.js"></script>
 
