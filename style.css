@@ -1,3 +1,10 @@
+:root {
+    --color-1: rgb(59, 82, 73);
+    --color-2: rgb(202, 202, 170);
+    --color-3: rgb(119, 81, 68);
+    --color-accent: rgb(244, 175, 180);
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -6,7 +13,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
 .navbar {
@@ -39,10 +46,13 @@ body {
 }
 
 .hero-text-box {
-    max-width: 600px;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 40px;
-    border-radius: 10px;
+    width: 40vw;
+    height: 40vh;
+    background-color: rgba(42, 8, 0, 0.8);
+    color: var(--color-2);
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 4px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -55,12 +65,18 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+div.intro-buttons {
+    margin-top: 5vh;
+}
+
 div#stats {
     display: none;
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 3.5em;
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 900;
     margin-bottom: 20px;
 }
 
@@ -73,13 +89,14 @@ button {
     font-size: 1em;
     margin: 0 10px;
     cursor: pointer;
-    background-color: #ffc107; /* Yellow button background color */
-    color: #333; /* Dark text color for buttons */
+    background-color: var(--color-accent);
+    color: black;
     border: none;
     border-radius: 5px;
     transition: background-color 0.3s;
+    font-family: "Lato"
 }
 
 button:hover {
-    background-color: #e0a800; /* Darker yellow on hover */
+    background-color: var(--color-2)
 }
