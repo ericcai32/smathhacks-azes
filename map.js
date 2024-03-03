@@ -119,9 +119,9 @@ function checkLocation() {
     let binaryClassifier
     if(JSONfile[resultA].land_use === "4"){
         binaryClassifier = 3
-    } else if(JSONfile[resultB].land_use === "4" || result1 === "4"){
+    } else if(JSONfile[resultB].land_use === "4" || knn1.classify(newPoint1) == 4){
         binaryClassifier = 2
-    } else if(JSONfile[resultC].land_use === "4" || result3 === "4"){
+    } else if(JSONfile[resultC].land_use === "4" || knn3.classify(newPoint1) == 4){
         binaryClassifier = 1
     } else{
         binaryCLassifier=0
